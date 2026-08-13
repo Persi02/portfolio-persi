@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 5 — Hero (terminée, en attente de validation pour la Phase 6 — About)
-- **Prochaine phase :** 6 — About
+- **Phase actuelle :** 6 — About (terminée, en attente de validation pour la Phase 7 — Skills)
+- **Prochaine phase :** 7 — Skills
 
 ---
 
@@ -85,10 +85,10 @@
 
 ## Phase 6 — About
 
-- [ ] Rédiger le texte About (identité, philosophie, spécialisation, honnête)
-- [ ] Créer la section About
-- [ ] Mettre en avant la spécialisation frontend/full-stack
-- [ ] Vérifier qu'aucune expérience n'est inventée
+- [x] Rédiger le texte About (identité, philosophie de travail, spécialisation) — `src/components/sections/about.tsx` (2 paragraphes courts, pas un CV)
+- [x] Créer la section About (eyebrow « À propos », h2 « Un profil frontend & full-stack », 3 cartes mises en avant, CTA → `/about`)
+- [x] Mettre en avant la spécialisation frontend/full-stack (React/Next.js/Node.js, SQL & NoSQL)
+- [x] Vérifier qu'aucune expérience n'est inventée (uniquement Bienfe, Mtechniix, formations du spec ; reveal animé FadeIn/Stagger, reduced-motion OK)
 
 ---
 
