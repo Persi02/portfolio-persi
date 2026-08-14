@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 9 — Project Detail (terminée, en attente de validation pour la Phase 10 — Experience)
-- **Prochaine phase :** 10 — Experience
+- **Phase actuelle :** 10 — Experience (terminée, en attente de validation pour la Phase 11 — Services)
+- **Prochaine phase :** 11 — Services
 
 ---
 
@@ -129,10 +129,12 @@
 
 ## Phase 10 — Experience
 
-- [ ] Créer `src/data/experience.ts` (Bienfe, Mtechniix, Junior Dev, formations)
-- [ ] Créer la timeline Experience (entreprise, poste, période, description, technologies)
-- [ ] Marquer « 2026 — aujourd'hui » pour Bienfe
-- [ ] Vérifier qu'aucune information n'est inventée
+- [x] Vérifier `src/data/experience.ts` (Bienfe « 2026 — aujourd'hui » `current: true`, Mtechniix Frontend sans année, Mtechniix Intégrateur XML « 2024 », Université d'Ankatso, Saha Academy) — conforme spec §3–4, corrigé sur demande d'Herinjaka
+- [x] Créer la timeline Experience — `src/components/sections/experience.tsx` (server : ligne verticale + points, entrée = période (ou étiquette « Formation » si absente), badge « En cours », organisation h3, poste, description si présente, chips technologies)
+- [x] Marquer clairement « 2026 — aujourd'hui » pour Bienfe + badge « En cours »
+- [x] Afficher les technologies uniquement si pertinentes (chips masquées si liste vide ; aucune section vide)
+- [x] Ne pas transformer en CV détaillé (aucune description inventée — champ `description` absent des données)
+- [x] Vérifier : timeline lisible sur mobile (colonne simple + grille `sm:grid-cols-[170px_1fr]`), 5 entrées / 5 points / 4 traits (dernier masqué), 1 h1 et 4 h2 sur l'accueil
 
 ---
 
