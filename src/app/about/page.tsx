@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { About } from "@/components/sections/about";
+import { Experience } from "@/components/sections/experience";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -19,7 +20,8 @@ export default function AboutPage() {
           {site.tagline}
         </p>
       </div>
-      <About />
+      <About showCta={false} />
+      <Experience />
     </main>
   );
 }
