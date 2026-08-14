@@ -1,5 +1,11 @@
+"use client";
+
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+
 import { Badge } from "@/components/ui/badge";
-import { FadeIn } from "@/components/animations/fade-in";
+import { SectionHeading } from "@/components/animations/section-heading";
 import {
   StaggerContainer,
   StaggerItem,
@@ -13,6 +19,52 @@ const typeLabels: Partial<Record<ExperienceEntryType, string>> = {
 };
 
 export function Experience() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const lines = ref.current?.querySelectorAll<HTMLElement>(
+        "[data-experience-line]"
+      );
+      lines?.forEach((line) => {
+        gsap.fromTo(
+          line,
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: line,
+              start: "top 92%",
+              once: true,
+            },
+          }
+        );
+      });
+
+      gsap.fromTo(
+        "[data-experience-dot]",
+        { scale: 0, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.5,
+          ease: "back.out(2.5)",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
+    });
+
+    return () => mm.revert();
+  }, { scope: ref });
+
   if (experiences.length === 0) {
     return null;
   }
@@ -20,16 +72,12 @@ export function Experience() {
   return (
     <section className="border-t border-border/60">
       <div className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:py-24">
-        <FadeIn>
-          <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            Expérience
-          </p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-            Parcours &amp; formation
-          </h2>
-        </FadeIn>
+        <SectionHeading
+          eyebrow="Expérience"
+          title="Parcours & formation"
+        />
 
-        <StaggerContainer className="mt-10">
+        <StaggerContainer className="mt-10" stagger={0.1}>
           <ol>
             {experiences.map((entry, index) => {
               const isLast = index === experiences.length - 1;
@@ -38,14 +86,16 @@ export function Experience() {
                 <StaggerItem key={entry.id}>
                   <li className="relative pb-10 ps-8 last:pb-0 sm:grid sm:grid-cols-[170px_1fr] sm:gap-x-8 sm:ps-10">
                     <span
+                      data-experience-line
                       className={
                         isLast
                           ? "hidden"
-                          : "absolute start-[3px] top-2 h-full w-px bg-border"
+                          : "absolute start-[3px] top-2 h-full w-px origin-top bg-border"
                       }
                       aria-hidden="true"
                     />
                     <span
+                      data-experience-dot
                       className="absolute start-0 top-1.5 size-[7px] rounded-full border-2 border-primary bg-background"
                       aria-hidden="true"
                     />

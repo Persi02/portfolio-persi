@@ -1,4 +1,4 @@
-import { FadeIn } from "@/components/animations/fade-in";
+import { SectionHeading } from "@/components/animations/section-heading";
 import {
   StaggerContainer,
   StaggerItem,
@@ -69,14 +69,10 @@ export function Skills() {
   return (
     <section className="border-t border-border/60">
       <div className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:py-24">
-        <FadeIn>
-          <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            Compétences
-          </p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-            Un écosystème JavaScript / TypeScript
-          </h2>
-        </FadeIn>
+        <SectionHeading
+          eyebrow="Compétences"
+          title="Un écosystème JavaScript / TypeScript"
+        />
 
         <StaggerContainer className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
           {categories.map((group) => (

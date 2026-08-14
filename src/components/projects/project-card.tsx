@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
 
 import { Badge } from "@/components/ui/badge";
 import { getCategoryLabel } from "@/lib/projects";
@@ -21,11 +26,84 @@ export function ProjectCard({ project }: ProjectCardProps) {
     year,
   } = project;
 
+  const ref = useRef<HTMLAnchorElement>(null);
+  const glowRef = useRef<HTMLSpanElement>(null);
+
+  useGSAP(() => {
+    const card = ref.current;
+    const glow = glowRef.current;
+    if (!card || !glow) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      if (!window.matchMedia("(hover: hover)").matches) return;
+
+      const xTo = gsap.quickTo(glow, "x", {
+        duration: 0.35,
+        ease: "power3.out",
+      });
+      const yTo = gsap.quickTo(glow, "y", {
+        duration: 0.35,
+        ease: "power3.out",
+      });
+
+      const onEnter = () => {
+        gsap.to(card, {
+          y: -4,
+          duration: 0.35,
+          ease: "power3.out",
+          overwrite: "auto",
+        });
+        gsap.to(glow, { opacity: 1, duration: 0.3 });
+      };
+
+      const onLeave = () => {
+        gsap.to(card, {
+          y: 0,
+          duration: 0.35,
+          ease: "power3.out",
+          overwrite: "auto",
+        });
+        gsap.to(glow, { opacity: 0, duration: 0.3 });
+      };
+
+      const onMove = (event: PointerEvent) => {
+        const rect = card.getBoundingClientRect();
+        xTo(event.clientX - rect.left - glow.offsetWidth / 2);
+        yTo(event.clientY - rect.top - glow.offsetHeight / 2);
+      };
+
+      card.addEventListener("pointerenter", onEnter);
+      card.addEventListener("pointerleave", onLeave);
+      card.addEventListener("pointermove", onMove);
+
+      return () => {
+        card.removeEventListener("pointerenter", onEnter);
+        card.removeEventListener("pointerleave", onLeave);
+        card.removeEventListener("pointermove", onMove);
+      };
+    });
+
+    return () => mm.revert();
+  }, { scope: ref });
+
   return (
     <Link
+      ref={ref}
       href={`/projects/${slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-card transition-[transform,box-shadow,border-color] duration-300 motion-reduce:transition-none hover:-translate-y-1 motion-reduce:hover:translate-y-0 hover:border-primary/40 hover:shadow-elevated"
+      className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-card transition-[box-shadow,border-color] duration-300 motion-reduce:transition-none hover:border-primary/40 hover:shadow-elevated"
     >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+      >
+        <span
+          ref={glowRef}
+          className="absolute left-0 top-0 size-60 rounded-full opacity-0 transition-opacity duration-300 motion-reduce:transition-none [background:radial-gradient(circle_at_center,color-mix(in_oklch,var(--primary)_18%,transparent)_0%,transparent_65%)]"
+        />
+      </span>
+
       <div className="relative aspect-[16/10] overflow-hidden bg-muted/50">
         {thumbnail ? (
           <Image
@@ -44,7 +122,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-4">
+      <div className="relative flex flex-1 flex-col p-4">
         <div className="flex items-center justify-between gap-2">
           <Badge variant="outline">{getCategoryLabel(category)}</Badge>
           {year ? (

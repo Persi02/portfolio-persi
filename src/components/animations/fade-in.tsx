@@ -1,6 +1,8 @@
 "use client";
 
-import { m } from "motion/react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
 
 import type { ReactNode } from "react";
 
@@ -11,15 +13,39 @@ type FadeInProps = {
 };
 
 export function FadeIn({ children, className, delay = 0 }: FadeInProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    });
+
+    return () => mm.revert();
+  }, { scope: ref });
+
   return (
-    <m.div
-      className={className}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
-    >
+    <div ref={ref} className={className}>
       {children}
-    </m.div>
+    </div>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 
-import { m, type Variants } from "motion/react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
 
 import type { ReactNode } from "react";
 
@@ -15,46 +17,55 @@ type StaggerItemProps = {
   className?: string;
 };
 
-const containerVariants = (stagger: number): Variants => ({
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: stagger,
-    },
-  },
-});
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
-
 export function StaggerContainer({
   children,
   className,
   stagger = 0.08,
 }: StaggerContainerProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const items = el.querySelectorAll<HTMLElement>("[data-stagger-item]");
+    if (items.length === 0) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    });
+
+    return () => mm.revert();
+  }, { scope: ref });
+
   return (
-    <m.div
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={containerVariants(stagger)}
-    >
+    <div ref={ref} className={className}>
       {children}
-    </m.div>
+    </div>
   );
 }
 
 export function StaggerItem({ children, className }: StaggerItemProps) {
   return (
-    <m.div className={className} variants={itemVariants}>
+    <div data-stagger-item className={className}>
       {children}
-    </m.div>
+    </div>
   );
 }

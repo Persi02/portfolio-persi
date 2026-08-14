@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { PageTransition } from "@/components/animations/page-transition";
+import { Fireflies } from "@/components/ambient/fireflies";
 import { Providers } from "@/app/providers";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Aller au contenu
         </a>
         <Providers>
+          <Fireflies />
           <Header />
           <div id="contenu" className="flex flex-1 flex-col">
             <PageTransition>{children}</PageTransition>

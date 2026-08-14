@@ -1,15 +1,12 @@
 "use client";
 
-import { LazyMotion, MotionConfig, domAnimation } from "motion/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { ThemeProvider } from "@/components/theme-provider";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export function Providers({ children }: { children: React.ReactNode }) {
-  return (
-    <ThemeProvider>
-      <LazyMotion features={domAnimation}>
-        <MotionConfig reducedMotion="user">{children}</MotionConfig>
-      </LazyMotion>
-    </ThemeProvider>
-  );
+  return <ThemeProvider>{children}</ThemeProvider>;
 }

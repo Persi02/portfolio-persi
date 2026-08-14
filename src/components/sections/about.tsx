@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { FadeIn } from "@/components/animations/fade-in";
+import { SectionHeading } from "@/components/animations/section-heading";
 import {
   StaggerContainer,
   StaggerItem,
@@ -29,14 +30,10 @@ export function About({ showCta = true }: { showCta?: boolean }) {
   return (
     <section className="border-t border-border/60">
       <div className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:py-24">
-        <FadeIn>
-          <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            À propos
-          </p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-            Un profil frontend & full-stack
-          </h2>
-        </FadeIn>
+        <SectionHeading
+          eyebrow="À propos"
+          title="Un profil frontend & full-stack"
+        />
 
         <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <FadeIn delay={0.1} className="space-y-4 text-base leading-relaxed text-muted-foreground">
