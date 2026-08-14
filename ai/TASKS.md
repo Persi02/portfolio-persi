@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 7 — Skills (terminée, en attente de validation pour la Phase 8 — Projects)
-- **Prochaine phase :** 8 — Projects
+- **Phase actuelle :** 8 — Projects (terminée, en attente de validation pour la Phase 9 — Project Detail)
+- **Prochaine phase :** 9 — Project Detail
 
 ---
 
@@ -103,14 +103,13 @@
 
 ## Phase 8 — Projects
 
-- [ ] Finaliser `src/types/project.ts` et `src/data/projects.ts`
-- [ ] Initialiser `src/data/projects.ts` vide (aucun projet publié ; structure prête pour les vrais projets)
-- [ ] Gérer proprement l'affichage d'une liste de projets vide (état neutre)
-- [ ] Créer `ProjectCard` (preview, titre, catégorie, description, stack, année, CTA, hover)
-- [ ] Créer la section « Selected Projects » (`featured`)
-- [ ] Créer la page `/projects`
-- [ ] Préparer `public/projects/project-01…05/` (WebP/AVIF)
-- [ ] Vérifier : ajout d'un projet = modification des données uniquement
+- [x] Vérifier `src/types/project.ts` (complet) et `src/data/projects.ts` (initialisé `[]` — aucun projet fictif)
+- [x] Gérer proprement l'affichage d'une liste de projets vide (état neutre `ProjectsEmpty` : « Bientôt disponible », CTA Contact + GitHub)
+- [x] Créer `ProjectCard` (preview/placeholder, badge catégorie, titre, description, stack, année, CTA ; hover élégant : lift, bordure primaire, zoom image, apparition CTA — reduced-motion OK)
+- [x] Créer la section « Selected Projects » (`src/components/sections/projects.tsx`, `featured`) sur l'accueil
+- [x] Créer la page `/projects` (liste complète `getProjects()` + metadata FR, état vide géré)
+- [x] Préparer `public/projects/project-01…05/` (dossiers + `.gitkeep`, consigne WebP/AVIF à venir)
+- [x] Vérifier : l'ajout d'un projet = modification des données uniquement (les composants lisent `src/data/projects.ts`)
 
 ---
 
