@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 11 — Services (terminée, en attente de validation pour la Phase 12 — Contact)
-- **Prochaine phase :** 12 — Contact
+- **Phase actuelle :** 12 — Contact (terminée, en attente de validation pour la Phase 13 — Animations)
+- **Prochaine phase :** 13 — Animations
 
 ---
 
@@ -150,11 +150,13 @@
 
 ## Phase 12 — Contact
 
-- [ ] Créer le schéma Zod (nom, email, sujet, message)
-- [ ] Créer le formulaire (React Hook Form + Zod resolver) avec erreurs accessibles
-- [ ] Mettre en place la soumission (prototype simulé tant qu'aucun backend n'est justifié)
-- [ ] Afficher email, GitHub, LinkedIn (si les URLs existent)
-- [ ] Afficher le CTA « Vous avez un projet ? Parlons-en. »
+- [x] Créer le schéma Zod — `src/lib/validations/contact.ts` (nom ≥ 2, email `z.email()`, sujet ≥ 3, message ≥ 10 ; zod v4)
+- [x] Créer le formulaire — `src/components/contact/contact-form.tsx` (React Hook Form + `zodResolver`, erreurs accessibles champ par champ : `aria-invalid` + `aria-describedby` + `role="alert"`, `noValidate`)
+- [x] Soumission simulée réussie (prototype, sans backend — connecté en prod seulement si justifié) : état « Envoi en cours… » puis écran « Merci pour votre message » (note : démo)
+- [x] Afficher email, GitHub, LinkedIn (`ContactInfo` — lien affiché uniquement si URL/email existe ; GitHub présent, email/LinkedIn masqués)
+- [x] CTA « Vous avez un projet ? Parlons-en. » (h2 de la section)
+- [x] Créer la section `src/components/sections/contact.tsx` (accueil, grille formulaire + infos) et la page `/contact` (h1 « Contact » + section)
+- [x] Vérifier : formulaire rendu (labels, champs, bouton), aucun `mailto` tant que l'email est vide, GitHub affiché, 1 h1 et 6 h2 sur l'accueil
 
 ---
 
