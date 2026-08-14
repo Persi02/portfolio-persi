@@ -50,7 +50,7 @@ export function Services() {
               <StaggerItem key={service.id} className="h-full">
                 <Link
                   href="/contact"
-                  className="group flex h-full flex-col rounded-lg border border-border bg-card p-5 shadow-card transition-[border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-elevated"
+                  className="group flex h-full flex-col rounded-lg border border-border bg-card p-5 shadow-card transition-[transform,border-color,box-shadow] duration-300 motion-reduce:transition-none hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 hover:border-primary/40 hover:shadow-elevated"
                 >
                   <span className="inline-flex size-9 items-center justify-center rounded-md border border-border bg-muted/50">
                     <Icon

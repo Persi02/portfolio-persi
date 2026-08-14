@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/animations/stagger";
 import { ProjectCard } from "@/components/projects/project-card";
 import { ProjectsEmpty } from "@/components/projects/projects-empty";
 import { getProjects } from "@/lib/projects";
@@ -28,11 +32,13 @@ export default function ProjectsPage() {
         </p>
 
         {projects.length > 0 ? (
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <StaggerContainer className="mt-10 grid gap-5 sm:grid-cols-2">
             {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <StaggerItem key={project.id} className="h-full">
+                <ProjectCard project={project} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         ) : (
           <div className="mt-10">
             <ProjectsEmpty />

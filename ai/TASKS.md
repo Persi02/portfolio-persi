@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 12 — Contact (terminée, en attente de validation pour la Phase 13 — Animations)
-- **Prochaine phase :** 13 — Animations
+- **Phase actuelle :** 13 — Animations (terminée, en attente de validation pour la Phase 14 — SEO)
+- **Prochaine phase :** 14 — SEO
 
 ---
 
@@ -162,12 +162,13 @@
 
 ## Phase 13 — Animations
 
-- [ ] Vérifier/soigner l'animation du Hero
-- [ ] Ajouter les révélations de sections (scroll reveal, stagger)
-- [ ] Animer ProjectCard (hover, entrée)
-- [ ] Animer navigation et transitions de pages
-- [ ] Animer boutons et micro-interactions
-- [ ] Vérifier `prefers-reduced-motion` partout
+- [x] Vérifier l'animation du Hero (Phase 5) — entrée stagger + ease personnalisé cohérents, inchangée
+- [x] Révélations de sections (scroll reveal, stagger) — déjà en place via `src/components/animations/` (FadeIn, StaggerContainer/StaggerItem) sur About, Skills, Experience, Projects, Services, Contact
+- [x] Animer ProjectCard (hover, entrée) — hover (lift, zoom, CTA) déjà en place ; entrée ajoutée sur `/projects` (grid enveloppée de StaggerContainer/StaggerItem, cohérent avec l'accueil)
+- [x] Animer la navigation et les transitions de pages — `PageTransition` (motion, fade + translate léger, `key={pathname}`) autour du contenu dans `layout.tsx` ; header/footer persistants (hors transition) ; soulignement animé (scale-x) sur le hover des liens de nav desktop. Note : React `<ViewTransition>` (View Transitions API) non disponible dans React 19.2.8 installé (runtime + types) → transition de pages réalisée avec `motion` à la place ; à réévaluer si React est upgradé
+- [x] Animer les boutons et micro-interactions — déjà en place (hover/active boutons, cartes) ; flèches ProjectNav avec motion-reduce
+- [x] Vérifier `prefers-reduced-motion` partout — `MotionConfig reducedMotion="user"` (Providers) + `motion-reduce:transition-none` sur les transitions CSS (ProjectCard, Services, ProjectNav, header after, ThemeToggle)
+- [x] Vérifier : lint + build + dev OK (PageTransition actif sur toutes les routes, skip link intact, nav animée, accueil 6 h2)
 
 ---
 

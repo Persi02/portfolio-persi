@@ -44,7 +44,7 @@ export function Header() {
                   "relative rounded-md px-3 py-2 text-sm transition-colors",
                   active
                     ? "font-medium text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-muted-foreground after:absolute after:inset-x-3 after:-bottom-px after:h-px after:origin-left after:scale-x-0 after:bg-primary/60 after:transition-transform after:duration-300 after:ease-out after:motion-reduce:transition-none hover:text-foreground hover:after:scale-x-100"
                 )}
               >
                 {item.label}

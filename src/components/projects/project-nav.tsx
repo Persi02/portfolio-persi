@@ -25,7 +25,7 @@ export function ProjectNav({ slug }: ProjectNavProps) {
             >
               <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <ArrowLeft
-                  className="size-3.5 transition-transform duration-300 group-hover:-translate-x-0.5"
+                  className="size-3.5 transition-transform duration-300 motion-reduce:transition-none group-hover:-translate-x-0.5"
                   aria-hidden="true"
                 />
                 Projet précédent
@@ -46,7 +46,7 @@ export function ProjectNav({ slug }: ProjectNavProps) {
               <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 Projet suivant
                 <ArrowRight
-                  className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                  className="size-3.5 transition-transform duration-300 motion-reduce:transition-none group-hover:translate-x-0.5"
                   aria-hidden="true"
                 />
               </span>
