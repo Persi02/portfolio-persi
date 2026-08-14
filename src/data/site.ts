@@ -6,6 +6,7 @@ export const site = {
   location: "", // TODO: localisation — à fournir par Herinjaka
   email: "", // TODO: EMAIL — à fournir par Herinjaka
   photo: "", // TODO: PHOTO — à fournir par Herinjaka
+  url: "", // TODO: URL de production — à fournir par Herinjaka (métadatas, sitemap, canonical, JSON-LD)
   githubUrl: "https://github.com/Persi02",
   linkedinUrl: "", // TODO: LINKEDIN_URL — à fournir par Herinjaka
 } as const;

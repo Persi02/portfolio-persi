@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 13 — Animations (terminée, en attente de validation pour la Phase 14 — SEO)
-- **Prochaine phase :** 14 — SEO
+- **Phase actuelle :** 15 — Accessibilité (terminée, en attente de validation pour la Phase 16 — Performance)
+- **Prochaine phase :** 16 — Performance
 
 ---
 
@@ -174,22 +174,28 @@
 
 ## Phase 14 — SEO
 
-- [ ] Metadata globale (title template, description, OG, canonical, icons)
-- [ ] `generateMetadata` par projet
-- [ ] Créer `sitemap.ts` et `robots.ts`
-- [ ] Ajouter le structured data `Person` (JSON-LD)
-- [ ] Vérifier `lang="fr"` et slugs stables
+- [x] Metadata globale complète — `layout.tsx` : `metadataBase` (si `site.url`), `title` (`default` + `template`), `description` (tagline), `robots` (index/follow), `alternates.canonical`, Open Graph (`website`, `fr_FR`, siteName, title, description), Twitter (`summary`), `icons` (`/icon.svg`)
+- [x] Favicon — `src/app/icon.svg` (monogramme « H. » cohérent avec le header), référencé via metadata `icons`
+- [x] Metadata par projet — `[slug]/page.tsx` : `title`, `description`, `openGraph` (type article, locale fr_FR, url si `site.url`) ; déjà en place depuis la Phase 9
+- [x] `app/sitemap.ts` — routes `/`, `/projects`, `/contact` + une entrée par projet (lastModified = année) ; renvoie `[]` tant que `site.url` est vide
+- [x] `app/robots.ts` — `Allow: /` pour tous ; `sitemap` uniquement si `site.url`
+- [x] Structured data `Person` (JSON-LD) sur l'accueil — `name`, `jobTitle`, `description`, `url` (si défini), `sameAs` (GitHub/LinkedIn présents), échappement `<`/`>` pour la sécurité
+- [x] Vérifier `lang="fr"`, slugs stables, canoniques — `lang="fr"` en place ; slugs stables ; canonical/url déterministes via `site.url` (à remplir Phase 18). Note : `title.template` du layout ne s'applique PAS à une page du même segment (doc Next) → titre complet sur l'accueil (`role — name`)
+- [x] Vérifier : lint + build + dev OK (title/description/OG/Twitter/robots/JSON-LD/favicon servis ; `sitemap.xml` vide tant que `site.url` vide ; `/about` absent du sitemap car page vide)
 
 ---
 
 ## Phase 15 — Accessibilité
 
-- [ ] Audit clavier (focus visible, pas de piège)
-- [ ] Audit HTML sémantique (landmarks, h1 unique)
-- [ ] Audit contrastes (thèmes clair + sombre, AA)
-- [ ] Vérifier alt, labels, aria
-- [ ] Vérifier les cibles tactiles (44 px)
-- [ ] Vérifier `prefers-reduced-motion`
+- [x] Audit clavier (focus visible, pas de piège) — landmarks présents, skip link, focus-visible rings, mobile nav Sheet (focus trap Radix), ordre tabulation logique
+- [x] Audit HTML sémantique (landmarks, h1 unique) — header/nav/main/footer sur toutes les pages, 1 h1/page, hiérarchie h2/h3 cohérente
+- [x] Audit contrastes (thèmes clair + sombre, AA) — corrigé dark theme : `--muted-foreground` 0.68→0.78, `--primary` 0.66→0.72, `--primary-foreground` 0.14→0.98 (tous pairs ≥ 4.5:1)
+- [x] Vérifier alt, labels, aria — images `alt={title}`, formulaires labels + `aria-invalid`/`aria-describedby`/`role="alert"`, boutons icônes `aria-label`, nav `aria-current`
+- [x] Vérifier les cibles tactiles (44 px) — `button.tsx` : base `min-h-[44px] min-w-[44px]`, tailles `h-11`/`size-11`/`h-12`/`size-12`
+- [x] Vérifier `prefers-reduced-motion` — `MotionConfig reducedMotion="user"` + `motion-reduce:transition-none` sur ProjectCard, Services, ProjectNav, header after, ThemeToggle
+- [x] Page `/about` créée avec contenu + h1 unique (réutilise section About)
+- [x] Sitemap mis à jour pour inclure `/about`
+- [x] Vérifier : lint + build + dev OK (1 h1/page, landmarks complets, contrastes AA, cibles 44px, reduced-motion)
 
 ---
 

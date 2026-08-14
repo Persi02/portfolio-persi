@@ -14,6 +14,7 @@ import { ProjectHero } from "@/components/projects/project-hero";
 import { ProjectNav } from "@/components/projects/project-nav";
 import { ProjectSection } from "@/components/projects/project-section";
 import { Button } from "@/components/ui/button";
+import { site } from "@/data/site";
 import { getProjectBySlug, getProjects } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -37,6 +38,15 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.shortDescription,
+    openGraph: {
+      type: "article",
+      locale: "fr_FR",
+      title: project.title,
+      description: project.shortDescription,
+      url: site.url
+        ? `${site.url}/projects/${project.slug}`
+        : undefined,
+    },
   };
 }
 
