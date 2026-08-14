@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { AlertCircle, CheckCircle2, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,6 +18,7 @@ import {
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -26,9 +28,21 @@ export function ContactForm() {
     defaultValues: contactDefaultValues,
   });
 
-  const onSubmit = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setSubmitted(true);
+  const onSubmit = async (values: ContactFormValues) => {
+    setError(null);
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        values,
+        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! },
+      );
+      setSubmitted(true);
+    } catch {
+      setError(
+        "Une erreur est survenue lors de l'envoi. Merci de réessayer ou de m'écrire directement.",
+      );
+    }
   };
 
   if (submitted) {
@@ -39,9 +53,7 @@ export function ContactForm() {
         </div>
         <h3 className="mt-4 text-base font-medium">Merci pour votre message</h3>
         <p className="mx-auto mt-1 max-w-sm text-sm text-muted-foreground">
-          Votre message a bien été enregistré. Cette démonstration simule
-          l&apos;envoi : le service de messagerie sera connecté lors de la mise
-          en production.
+          Votre message a bien été envoyé. Je vous répondrai au plus vite.
         </p>
       </div>
     );
@@ -146,6 +158,16 @@ export function ContactForm() {
           aria-hidden="true"
         />
       </Button>
+
+      {error ? (
+        <p
+          role="alert"
+          className="mt-4 flex items-start gap-2 text-sm text-destructive"
+        >
+          <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+          {error}
+        </p>
+      ) : null}
     </form>
   );
 }

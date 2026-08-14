@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -63,9 +64,14 @@ export function Header() {
           className="flex items-center gap-2.5"
           aria-label={`${site.name} — accueil`}
         >
-          <span className="flex size-8 items-center justify-center rounded-lg border border-border bg-muted font-mono text-xs font-semibold">
-            H.
-          </span>
+          <Image
+            src="/logo.png"
+            alt={`${site.name} — logo`}
+            width={40}
+            height={40}
+            priority
+            className="size-9 rounded-lg object-contain dark:invert sm:size-10"
+          />
           <span className="hidden text-sm font-medium tracking-tight sm:inline">
             {site.name}
           </span>
