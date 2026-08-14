@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 17 — Testing (terminée, en attente de validation pour la Phase 18 — Production)
-- **Prochaine phase :** 18 — Production
+- **Phase actuelle :** 18 — Production (build configuré, prêt pour déploiement Vercel + données Herinjaka)
+- **Prochaine phase :** — (fin du projet)
 
 ---
 
@@ -224,11 +224,13 @@
 
 ## Phase 18 — Production
 
-- [ ] Renseigner les vraies données (email, GitHub, LinkedIn, photo, location)
-- [ ] Ajouter les vrais projets fournis par Herinjaka (informations + screenshots)
-- [ ] Configurer le déploiement (Vercel recommandé)
-- [ ] Vérifier `npm run build` de production
-- [ ] Vérifier les métadatas finales (URLs de production)
+- [x] Configurer `next.config.ts` pour production (headers sécurité, compression, images AVIF/WebP)
+- [x] Vérifier `npm run build` de production — OK (10 pages statiques + 1 SSG projects/[slug])
+- [ ] Renseigner les vraies données (email, GitHub, LinkedIn, photo, location) — à fournir par Herinjaka
+- [ ] Ajouter les vrais projets fournis par Herinjaka (informations + screenshots) — à fournir par Herinjaka
+- [ ] Configurer le déploiement (Vercel recommandé) — `vercel deploy` ou liaison repo GitHub
+- [ ] Définir `site.url` via variable d'environnement `NEXT_PUBLIC_SITE_URL` sur Vercel
+- [ ] Vérifier les métadatas finales (URLs de production, canonical, sitemap, JSON-LD)
 - [ ] Test final Lighthouse + navigation complète
 
 ---
