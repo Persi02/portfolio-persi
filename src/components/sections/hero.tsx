@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, type Variants } from "motion/react";
+import { m, type Variants } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
 import { GitHubIcon } from "@/components/icons";
@@ -33,19 +33,19 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="mx-auto grid w-full max-w-5xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:pb-24 lg:pt-20">
-        <motion.div
+        <m.div
           initial="hidden"
           animate="show"
           variants={containerVariants}
         >
-          <motion.p
+          <m.p
             variants={itemVariants}
             className="font-mono text-xs uppercase tracking-wider text-muted-foreground"
           >
             {site.name}
-          </motion.p>
+          </m.p>
 
-          <motion.h1
+          <m.h1
             variants={itemVariants}
             className="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-[3.4rem] lg:leading-[1.08]"
           >
@@ -56,16 +56,16 @@ export function Hero() {
               </span>
               Full-Stack JavaScript Developer
             </span>
-          </motion.h1>
+          </m.h1>
 
-          <motion.p
+          <m.p
             variants={itemVariants}
             className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground"
           >
             {site.tagline}
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             variants={itemVariants}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
@@ -94,17 +94,17 @@ export function Hero() {
                 </Link>
               </Button>
             ) : null}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 12, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
           className="mx-auto w-full max-w-md lg:max-w-none"
         >
           <HeroVisual />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

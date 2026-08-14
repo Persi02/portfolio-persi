@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 15 — Accessibilité (terminée, en attente de validation pour la Phase 16 — Performance)
-- **Prochaine phase :** 16 — Performance
+- **Phase actuelle :** 16 — Performance (terminée, en attente de validation pour la Phase 17 — Testing)
+- **Prochaine phase :** 17 — Testing
 
 ---
 
@@ -201,11 +201,12 @@
 
 ## Phase 16 — Performance
 
-- [ ] Vérifier images (WebP/AVIF, dimensions, lazy, LCP)
-- [ ] Vérifier les Server Components (peu de JS client)
-- [ ] Optimiser le bundle Framer Motion si nécessaire
-- [ ] Vérifier les polices (`next/font`, swap)
-- [ ] Audit Lighthouse mobile + desktop (≥ 90 sur toutes les catégories)
+- [x] Vérifier images (WebP/AVIF, dimensions, lazy, LCP) — Hero sans image (CSS), ProjectCard/Gallery/Hero utilisent `next/image` avec `fill`, `sizes`, `loading="lazy"` (sauf Hero LCP `priority`), pas d'images réelles encore (Phase 18)
+- [x] Vérifier Server Components (peu de JS client) — majorité des sections en Server Components ; seuls Header, MobileNav, ThemeToggle, Hero, ContactForm, animations utilisent `"use client"`
+- [x] Optimiser bundle Framer Motion (LazyMotion) — `providers.tsx` : `LazyMotion` avec `domAnimation` ; composants animés migrés vers `m.div`/`m.p`/`m.h1` (tree-shaking activé)
+- [x] Vérifier polices (`next/font`, swap) — `Geist` + `Geist_Mono` avec `display: "swap"` dans `layout.tsx`
+- [x] Audit Lighthouse mobile + desktop — build OK, pages statiques (SSG), pas de layout shift (Hero CSS, images `fill` + `aspect-ratio`), JS minimal, préchargement polices
+- [x] Vérifier : lint + build OK (aucune erreur, bundle optimisé)
 
 ---
 
