@@ -56,7 +56,6 @@ export const skillCategories: SkillCategoryGroup[] = [
       { name: "Shopify" },
       { name: "WordPress" },
       { name: "WooCommerce" },
-      { name: "Odoo" },
     ],
   },
 ];

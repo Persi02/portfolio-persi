@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 6 — About (terminée, en attente de validation pour la Phase 7 — Skills)
-- **Prochaine phase :** 7 — Skills
+- **Phase actuelle :** 7 — Skills (terminée, en attente de validation pour la Phase 8 — Projects)
+- **Prochaine phase :** 8 — Projects
 
 ---
 
@@ -94,10 +94,10 @@
 
 ## Phase 7 — Skills
 
-- [ ] Créer `src/data/skills.ts` (5 catégories du spec)
-- [ ] Créer la section Skills
-- [ ] Mettre React / Next.js / Node.js en priorité visuelle
-- [ ] Vérifier l'absence de sections vides
+- [x] Vérifier `src/data/skills.ts` (5 catégories du spec §21, `priority: true` sur React / Next.js / Node.js) — déjà complet, inchangé
+- [x] Créer la section Skills — `src/components/sections/skills.tsx` (server component, cartes par catégorie, layout varié `lg:grid-cols-6` : Frontend/Backend larges, Database/Tools/CMS fines)
+- [x] Mettre React / Next.js / Node.js en priorité visuelle (tri stable priorités en tête, pastille primaire + `text-foreground font-medium`, les autres en muted)
+- [x] Vérifier l'absence de sections vides (filtre `skills.length > 0`, section masquée si aucune catégorie)
 
 ---
 

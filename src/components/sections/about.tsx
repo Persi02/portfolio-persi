@@ -21,7 +21,7 @@ const highlights = [
   {
     title: "E-commerce & CMS",
     description:
-      "Shopify, WordPress, WooCommerce et Odoo — des sites et boutiques aux applications métier.",
+      "Shopify, WordPress et WooCommerce — des sites et boutiques aux applications métier.",
   },
 ];
 

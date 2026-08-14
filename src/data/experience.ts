@@ -33,8 +33,6 @@ export const experiences: ExperienceEntry[] = [
     role: "Junior Developer",
     period: "Mai 2024 — Juillet 2024",
     type: "work",
-    description: "Expérience notamment autour d'Odoo.",
-    technologies: ["Odoo"],
   },
   {
     id: "universite-ankatso",
