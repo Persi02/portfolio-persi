@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 10 — Experience (terminée, en attente de validation pour la Phase 11 — Services)
-- **Prochaine phase :** 11 — Services
+- **Phase actuelle :** 11 — Services (terminée, en attente de validation pour la Phase 12 — Contact)
+- **Prochaine phase :** 12 — Contact
 
 ---
 
@@ -140,8 +140,11 @@
 
 ## Phase 11 — Services
 
-- [ ] Créer `src/data/services.ts` (Frontend, Full-stack, E-commerce, Applications métier)
-- [ ] Créer la section Services (concise, 4 cartes max)
+- [x] Vérifier `src/data/services.ts` (4 services du spec §23 : Frontend, Full-stack, E-commerce, Applications métier) — déjà complet, inchangé
+- [x] Créer la section Services — `src/components/sections/services.tsx` (server : grille `sm:grid-cols-2 lg:grid-cols-4`, carte = icône lucide (map id→icône) + titre h3 + description, lien carte → `/contact`)
+- [x] Section concise (4 cartes max, hover élégant cohérent avec ProjectCard)
+- [x] Lier à la section Contact (chaque carte mène à `/contact`)
+- [x] Vérifier : 4 cartes rendues, descriptions du spec, liens `/contact`, 1 h1 et 5 h2 sur l'accueil
 
 ---
 
