@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 16 — Performance (terminée, en attente de validation pour la Phase 17 — Testing)
-- **Prochaine phase :** 17 — Testing
+- **Phase actuelle :** 17 — Testing (terminée, en attente de validation pour la Phase 18 — Production)
+- **Prochaine phase :** 18 — Production
 
 ---
 
@@ -212,12 +212,13 @@
 
 ## Phase 17 — Testing
 
-- [ ] Mettre en place le framework de test (Vitest + Testing Library)
-- [ ] Tester les helpers de données (getProjects, getProjectBySlug, adjacents)
-- [ ] Tester la validation Zod du formulaire
-- [ ] Tester ProjectCard (données manquantes, liens absents)
-- [ ] Tester le cas projet inexistant
-- [ ] Vérifier que l'ajout d'un projet ne casse aucun test
+- [x] Mettre en place le framework de test (Jest + Testing Library + ts-jest)
+- [x] Tester les helpers de données (getProjects, getProjectBySlug, adjacents)
+- [x] Tester la validation Zod du formulaire
+- [x] Tester ProjectCard (données manquantes, liens absents)
+- [x] Tester le cas projet inexistant (via getProjectBySlug)
+- [x] Vérifier que l'ajout d'un projet ne casse aucun test
+- [x] Vérifier : `npm test` passe (36 tests)
 
 ---
 
