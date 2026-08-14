@@ -7,8 +7,8 @@
 
 ## État d'avancement
 
-- **Phase actuelle :** 8 — Projects (terminée, en attente de validation pour la Phase 9 — Project Detail)
-- **Prochaine phase :** 9 — Project Detail
+- **Phase actuelle :** 9 — Project Detail (terminée, en attente de validation pour la Phase 10 — Experience)
+- **Prochaine phase :** 10 — Experience
 
 ---
 
@@ -115,14 +115,15 @@
 
 ## Phase 9 — Project Detail
 
-- [ ] Créer `/projects/[slug]/page.tsx` (`generateStaticParams`, `generateMetadata`)
-- [ ] Créer le Hero du projet
-- [ ] Créer les sections (Overview, Context, Problem, Solution, Features, Tech Stack, Architecture, Challenges, Results, Gallery, Links)
-- [ ] Ne rendre une section que si la donnée existe (pas de section vide)
-- [ ] Résultats : contenu neutre ou absent si aucune donnée réelle
-- [ ] Créer la galerie de screenshots
-- [ ] Créer la navigation précédent/suivant + retour aux projets
-- [ ] Gérer le projet inexistant via `notFound()`
+- [x] Créer `/projects/[slug]/page.tsx` (`generateStaticParams`, `generateMetadata` async sur `params`)
+- [x] Créer le Hero du projet (`ProjectHero` : breadcrumb retour, badges catégorie/statut, h1, short description, année/rôle/client, techs, image principale `priority`)
+- [x] Créer les sections réutilisables (`ProjectSection` : eyebrow numéroté 01/02…, titre h2, contenu ; sections : Overview, Contexte, Problème, Solution, Fonctionnalités, Tech Stack, Architecture, Défis rencontrés, Résultats, Galerie, Liens)
+- [x] Ne rendre une section que si la donnée existe (tableau `rawSections` filtré — aucune section vide)
+- [x] Résultats : contenu neutre ou absent si aucune donnée réelle (section non rendue tant qu'aucun résultat réel)
+- [x] Créer la galerie de screenshots (`ProjectGallery` : Next Image `fill`, lazy, légendes, 1/2 colonnes)
+- [x] Créer la navigation précédent/suivant + retour aux projets (`ProjectNav` via `getAdjacentProjects`, bords gérés)
+- [x] Gérer le projet inexistant via `notFound()` (404 vérifié)
+- [x] Vérifier le rendu complet avec un projet de démonstration temporaire (toutes les sections, 1 h1, 11 h2, liens), puis revenir à `projects.ts = []` (aucun projet fictif commité)
 
 ---
 

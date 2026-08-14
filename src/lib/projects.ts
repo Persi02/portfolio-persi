@@ -1,5 +1,27 @@
 import { projects } from "@/data/projects";
-import type { Project } from "@/types";
+import type { Project, ProjectCategory, ProjectStatus } from "@/types";
+
+const categoryLabels: Record<ProjectCategory, string> = {
+  frontend: "Frontend",
+  "full-stack": "Full-stack",
+  "e-commerce": "E-commerce",
+  business: "Application métier",
+  other: "Autre",
+};
+
+const statusLabels: Record<ProjectStatus, string> = {
+  completed: "Terminé",
+  "in-progress": "En cours",
+  archived: "Archivé",
+};
+
+export function getCategoryLabel(category: ProjectCategory): string {
+  return categoryLabels[category];
+}
+
+export function getStatusLabel(status: ProjectStatus): string {
+  return statusLabels[status];
+}
 
 export function getProjects(): Project[] {
   return projects;

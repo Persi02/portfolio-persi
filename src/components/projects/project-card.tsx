@@ -3,15 +3,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import type { Project, ProjectCategory } from "@/types";
-
-const categoryLabels: Record<ProjectCategory, string> = {
-  frontend: "Frontend",
-  "full-stack": "Full-stack",
-  "e-commerce": "E-commerce",
-  business: "Application métier",
-  other: "Autre",
-};
+import { getCategoryLabel } from "@/lib/projects";
+import type { Project } from "@/types";
 
 type ProjectCardProps = {
   project: Project;
@@ -53,7 +46,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="flex flex-1 flex-col p-4">
         <div className="flex items-center justify-between gap-2">
-          <Badge variant="outline">{categoryLabels[category]}</Badge>
+          <Badge variant="outline">{getCategoryLabel(category)}</Badge>
           {year ? (
             <span className="text-xs text-muted-foreground">{year}</span>
           ) : null}
