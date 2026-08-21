@@ -74,7 +74,7 @@ export function Skills() {
           title="Un écosystème JavaScript / TypeScript"
         />
 
-        <StaggerContainer className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+        <StaggerContainer className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-6">
           {categories.map((group) => (
             <StaggerItem key={group.category} className={layout[group.category]}>
               <SkillCard group={group} />

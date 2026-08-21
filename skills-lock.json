@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "gsap": {
+      "source": "Microck/gsap-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsap/SKILL.md",
+      "computedHash": "42ada785b76599d529e67ff837a65426f0da69fbff2f10864298f2dfc48fc1fe"
+    },
+    "gsap-flip": {
+      "source": "Microck/gsap-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsap-flip/SKILL.md",
+      "computedHash": "22ab2e1f9d50752498d08257b4fb22bf816acfe5c19f5f4116bd0e13009a5087"
+    },
+    "gsap-performance": {
+      "source": "Microck/gsap-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsap-performance/SKILL.md",
+      "computedHash": "6084b70c36dcb7ac6824826c4692811dbe9d669151b3aa09be0e6b366f3ea4a3"
+    },
+    "gsap-react": {
+      "source": "Microck/gsap-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsap-react/SKILL.md",
+      "computedHash": "0eefdd8c8688dd3bbaf17d21fbe32161f06e84bca3a34ffb34077b541323a6f3"
+    },
+    "gsap-scrolltrigger": {
+      "source": "Microck/gsap-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsap-scrolltrigger/SKILL.md",
+      "computedHash": "fbcee3c5c69612106ab42aaec703d8bc2c2aa0431b728bc302334f806934873d"
+    }
+  }
+}

@@ -44,8 +44,6 @@ export const skillCategories: SkillCategoryGroup[] = [
       { name: "GitHub" },
       { name: "Docker" },
       { name: "Linux" },
-      { name: "Nginx" },
-      { name: "PM2" },
       { name: "Vercel" },
     ],
   },

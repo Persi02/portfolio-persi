@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import emailjs from "@emailjs/browser";
+import emailjs, { type EmailJSResponseStatus } from "@emailjs/browser";
 import { AlertCircle, CheckCircle2, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -38,11 +38,16 @@ export function ContactForm() {
         { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! },
       );
       setSubmitted(true);
-    } catch {
-      setError(
-        "Une erreur est survenue lors de l'envoi. Merci de réessayer ou de m'écrire directement.",
-      );
-    }
+} catch (err) {
+    const error = err as EmailJSResponseStatus;
+    console.error(
+      "EmailJS error:",
+      `${error.status} — ${error.text}`,
+    );
+    setError(
+      "Une erreur est survenue lors de l'envoi. Merci de réessayer ou m'écrire directement.",
+    );
+  }
   };
 
   if (submitted) {
